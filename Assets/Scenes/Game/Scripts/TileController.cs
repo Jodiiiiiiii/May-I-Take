@@ -11,6 +11,7 @@ public class TileController : MonoBehaviour
     private const float MAX_WOBBLE_HEIGHT = 0.5f;
     private const float MAX_WOBBLE_SPEED = 0.5f;
     private const float DESTROY_TIME = 0.1f;
+    private const float RED_INDICATOR = 7.5f;
 
     // variables
     private float xSpeed;
@@ -93,7 +94,7 @@ public class TileController : MonoBehaviour
                 transform.position += Vector3.right * xSpeed * Time.deltaTime;
 
                 // destory object when leaving frame
-                if (transform.position.x > CAMERA_WIDTH)
+                if (transform.position.x > RED_INDICATOR)
                 {
                     // decrement patience meter, play miss sound, camera big pulse, then destroy this tile
                     PatienceMeter.DecrementPatience();

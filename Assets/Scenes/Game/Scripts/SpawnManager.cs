@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     // constants
-    private const float Y_CENTER = 1.5f;
+    private const float Y_CENTER = 1.3f;
 
     // variables
     [SerializeField] private GameObject tilePrefab;
@@ -15,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float maxSpawnInterval;
     [SerializeField] private float ySpawnRange;
     [SerializeField] private float tileSpeed;
+    [SerializeField] private float verticalBoundary;
 
     float spawnTimer;
     float spawnTime;
@@ -83,7 +84,7 @@ public class SpawnManager : MonoBehaviour
                         foreach (Transform child in transform) // compare pressed key to tiles to see if one should be deleted
                         {
                             // destroy if character matches
-                            if (character == child.GetComponent<TileController>().GetCharacter())
+                            if (child.position.x > verticalBoundary && character == child.GetComponent<TileController>().GetCharacter())
                             {
                                 child.GetComponent<TileController>().Destroy();
                                 misinput = false;
