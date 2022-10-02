@@ -26,7 +26,7 @@ public class PatienceMeter : MonoBehaviour
     void Update()
     {
         // set to end position when patience is up
-        if (clock.transform.localPosition.x > METER_LENGTH)
+        if (clock.transform.localPosition.x >= METER_LENGTH)
         {
             clock.transform.localPosition = new Vector3(METER_LENGTH, clock.transform.localPosition.y, 0);
         }

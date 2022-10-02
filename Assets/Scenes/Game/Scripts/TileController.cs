@@ -95,11 +95,12 @@ public class TileController : MonoBehaviour
                 // destory object when leaving frame
                 if (transform.position.x > CAMERA_WIDTH)
                 {
-                    // decrement patience meter, play miss sound, then destroy this tile
+                    // decrement patience meter, play miss sound, camera big pulse, then destroy this tile
                     PatienceMeter.DecrementPatience();
                     PatienceMeter.DecrementPatience();
                     PatienceMeter.DecrementPatience();
                     spawnManager.PlayMissSound();
+                    GameObject.Find("Main Camera").GetComponent<CameraController>().BigPulseCamera();
                     Destroy(gameObject);
                 }
             }

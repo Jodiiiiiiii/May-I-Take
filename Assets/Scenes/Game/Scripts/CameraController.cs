@@ -16,4 +16,9 @@ public class CameraController : MonoBehaviour
     {
         camAnimator.SetTrigger("shake");
     }
+
+    public void BigPulseCamera()
+    {
+        camAnimator.SetTrigger("bigPulse");
+    }
 }
