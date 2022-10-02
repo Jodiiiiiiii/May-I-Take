@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     }
     private SaveData data;
 
+    // audio variables
+    AudioSource audioSource;
+    [SerializeField] private AudioClip unlimitedToggleAudio;
+    [SerializeField] private AudioClip levelSelectAudio;
+    [SerializeField] private AudioClip howToAudio;
+
     #region UNITY METHODS
 
     public void Awake() // called each time a scene is loaded/reloaded
@@ -55,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     void Start() // only called once at program boot-up (since duplicate GameManagers are deleted in Awake() as a singleton)
     {
-        // not needed?
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -117,6 +123,7 @@ public class GameManager : MonoBehaviour
     public void ToggleUnlimited()
     {
         data.unlimited = !data.unlimited;
+        audioSource.PlayOneShot(unlimitedToggleAudio);
     }
 
     #endregion
@@ -130,6 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadBreakfast()
     {
+        audioSource.PlayOneShot(levelSelectAudio);
         if (data.unlimited)
             LoadScene("BreakfastUnlimited");
         else
@@ -138,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLunch()
     {
+        audioSource.PlayOneShot(levelSelectAudio);
         if (data.unlimited)
             LoadScene("LunchUnlimited");
         else
@@ -146,10 +155,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadDinner()
     {
+        audioSource.PlayOneShot(levelSelectAudio);
         if (data.unlimited)
             LoadScene("DinnerUnlimited");
         else
             LoadScene("Dinner");
+    }
+
+    public void LoadHowTo()
+    {
+        audioSource.PlayOneShot(howToAudio);
+        LoadScene("HowTo");
     }
 
     #endregion
