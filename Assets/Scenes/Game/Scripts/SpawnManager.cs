@@ -80,9 +80,12 @@ public class SpawnManager : MonoBehaviour
                     GameManager.instance.SetDinnerClear(true);
 
                 // remove all current tiles
-                foreach(Transform child in transform)
+                if(!GameManager.instance.GetUnlimited())
                 {
-                    child.GetComponent<TileController>().Destroy();
+                    foreach (Transform child in transform)
+                    {
+                        child.GetComponent<TileController>().Destroy();
+                    }
                 }
             }
 

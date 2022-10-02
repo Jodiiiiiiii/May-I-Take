@@ -29,9 +29,7 @@ public class ProtagAnimate : MonoBehaviour
     void Update()
     {
         // only set to 4 if 
-        if (spawnManager.GetStage() == 4 && !GameManager.instance.GetUnlimited())
-            animator.SetInteger("stage", spawnManager.GetStage());
-        else
+        if (spawnManager.GetStage() != 4 || !GameManager.instance.GetUnlimited())
             animator.SetInteger("stage", spawnManager.GetStage());
 
         if(spawnManager.GetTotalTime() - currentLandmark > 10f)

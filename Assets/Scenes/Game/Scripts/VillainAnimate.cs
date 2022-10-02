@@ -19,6 +19,7 @@ public class VillainAnimate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetInteger("stage", spawnManager.GetStage());
+        if(!GameManager.instance.GetUnlimited())
+            animator.SetInteger("stage", spawnManager.GetStage());
     }
 }
