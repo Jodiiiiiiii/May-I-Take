@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    // constants
+    private const float Y_CENTER = 1.5f;
+
     // variables
     [SerializeField] private GameObject tilePrefab;
     [SerializeField] private string[] characters;
@@ -26,7 +29,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnTimer += Time.deltaTime;
+        if(!PatienceMeter.OutOfPatience())
+            spawnTimer += Time.deltaTime;
 
         if(spawnTimer > spawnTime)
         {
@@ -37,7 +41,7 @@ public class SpawnManager : MonoBehaviour
             // create new tile, and initialize its values
             GameObject tile = Instantiate(tilePrefab);
             int index = Random.Range(0, characters.Length);
-            tile.GetComponent<TileController>().init(tileSpeed, Random.Range(-ySpawnRange, ySpawnRange), characters[index], sprites[index]);
+            tile.GetComponent<TileController>().init(tileSpeed, Random.Range(Y_CENTER -ySpawnRange, Y_CENTER + ySpawnRange), characters[index], sprites[index]);
         }
     }
 }
