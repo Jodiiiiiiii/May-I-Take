@@ -247,6 +247,7 @@ MonoBehaviour:
   unlimitedToggleAudio: {fileID: 8300000, guid: c479a5070590231419f299969e572524, type: 3}
   levelSelectAudio: {fileID: 8300000, guid: d40abf8f79b283f4aa9dad1e8225ee1a, type: 3}
   howToAudio: {fileID: 8300000, guid: 7bf88ace6e54aec46bd9101eb6896265, type: 3}
+  ambience: {fileID: 8300000, guid: bf855548c6c5c4848aa81c1bf7909245, type: 3}
 --- !u!4 &161423127
 Transform:
   m_ObjectHideFlags: 0

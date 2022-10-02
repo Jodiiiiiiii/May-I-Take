@@ -163,12 +163,12 @@ public class SpawnManager : MonoBehaviour
 
     public void PlayMissSound()
     {
-        audioSource.PlayOneShot(missSound);
+        audioSource.PlayOneShot(missSound, 3.0f); ;
     }
 
     public void PlayMisinputSound()
     {
-        audioSource.PlayOneShot(misinputSound);
+        audioSource.PlayOneShot(misinputSound, 3.0f);
     }
 
     private void Accelerate()

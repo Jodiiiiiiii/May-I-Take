@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip unlimitedToggleAudio;
     [SerializeField] private AudioClip levelSelectAudio;
     [SerializeField] private AudioClip howToAudio;
+    [SerializeField] private AudioClip ambience;
 
     #region UNITY METHODS
 
@@ -67,7 +68,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // not needed?
+        if(!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(ambience);
+        }
     }
 
     private void OnApplicationQuit()
