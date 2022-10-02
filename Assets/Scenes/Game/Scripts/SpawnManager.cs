@@ -19,11 +19,18 @@ public class SpawnManager : MonoBehaviour
     float spawnTimer;
     float spawnTime;
 
+    // audio
+    [SerializeField] private AudioClip popSound;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         spawnTimer = 0;
         spawnTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+
+        // audio
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,9 +46,14 @@ public class SpawnManager : MonoBehaviour
             spawnTimer = 0;
 
             // create new tile, and initialize its values
-            GameObject tile = Instantiate(tilePrefab);
+            GameObject tile = Instantiate(tilePrefab, gameObject.transform);
             int index = Random.Range(0, characters.Length);
             tile.GetComponent<TileController>().init(tileSpeed, Random.Range(Y_CENTER -ySpawnRange, Y_CENTER + ySpawnRange), characters[index], sprites[index]);
         }
+    }
+
+    public void PlayPopSound()
+    {
+        audioSource.PlayOneShot(popSound);
     }
 }
