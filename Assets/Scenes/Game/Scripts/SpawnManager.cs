@@ -47,7 +47,22 @@ public class SpawnManager : MonoBehaviour
 
             // create new tile, and initialize its values
             GameObject tile = Instantiate(tilePrefab, gameObject.transform);
-            int index = Random.Range(0, characters.Length);
+            // get new index (that is NOT a duplicate)
+            bool duplicate;
+            int index;
+            do
+            {
+                duplicate = false;
+                index = Random.Range(0, characters.Length);
+                foreach (Transform child in transform)
+                {
+                    if(child.GetComponent<TileController>().GetCharacter() == characters[index])
+                    {
+                        duplicate = true;
+                    }
+                }
+            } while (duplicate); // keep getting new index until it is a new index
+            // initialize tile
             tile.GetComponent<TileController>().init(tileSpeed, Random.Range(Y_CENTER -ySpawnRange, Y_CENTER + ySpawnRange), characters[index], sprites[index]);
         }
     }

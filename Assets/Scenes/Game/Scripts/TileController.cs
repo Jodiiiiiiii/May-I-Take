@@ -114,4 +114,9 @@ public class TileController : MonoBehaviour
         
     }
 
+    public string GetCharacter()
+    {
+        return character;
+    }
+
 }
