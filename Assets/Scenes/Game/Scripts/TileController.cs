@@ -15,11 +15,13 @@ public class TileController : MonoBehaviour
     // y drift speed
 
     // constructor for spawn manager to use
-    public void init(float _xSpeed, float _initY, string _character)
+    public void init(float _xSpeed, float _initY, string _character, Sprite _sprite)
     {
         xSpeed = _xSpeed;
         initY = _initY;
         character = _character;
+        GetComponent<SpriteRenderer>().sprite = _sprite;
+
     }
 
     // Start is called before the first frame update

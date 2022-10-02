@@ -6,6 +6,8 @@ public class SpawnManager : MonoBehaviour
 {
     // variables
     [SerializeField] private GameObject tilePrefab;
+    [SerializeField] private string[] characters;
+    [SerializeField] private Sprite[] sprites;
     [SerializeField] private float minSpawnInterval;
     [SerializeField] private float maxSpawnInterval;
     [SerializeField] private float ySpawnRange;
@@ -13,7 +15,6 @@ public class SpawnManager : MonoBehaviour
 
     float spawnTimer;
     float spawnTime;
-    TileController currentTile;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,8 @@ public class SpawnManager : MonoBehaviour
 
             // create new tile, and initialize its values
             GameObject tile = Instantiate(tilePrefab);
-            tile.GetComponent<TileController>().init(tileSpeed, Random.Range(-ySpawnRange, ySpawnRange), "a");
+            int index = Random.Range(0, characters.Length);
+            tile.GetComponent<TileController>().init(tileSpeed, Random.Range(-ySpawnRange, ySpawnRange), characters[index], sprites[index]);
         }
     }
 }

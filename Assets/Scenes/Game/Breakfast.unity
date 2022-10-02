@@ -252,6 +252,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 975742640976855631, guid: b67c1f6baf5b35e469ca38ff805e08dc, type: 3}
+  characters:
+  - a
+  - b
+  - c
+  - d
+  - e
+  - f
+  - g
+  - h
+  - i
+  - j
+  - k
+  - l
+  - m
+  - n
+  - o
+  - p
+  - q
+  - r
+  - s
+  - t
+  - u
+  - v
+  - w
+  - x
+  - y
+  - z
+  sprites:
+  - {fileID: 849946587, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -1347762043, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 152790548, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -38828580, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 1974316048, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -442187085, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -1069378005, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -1589048077, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -1702709787, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -268391403, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -770084802, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 508909645, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -527745754, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 208309450, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -391705470, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -324698323, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -2013900409, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 797343276, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -1024656180, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -25404657, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 1680973047, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -2059140934, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 153177453, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: -56346135, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 1556548957, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
+  - {fileID: 2025228475, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
   minSpawnInterval: 1
   maxSpawnInterval: 2
   ySpawnRange: 1
