@@ -23,4 +23,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/BreakfastUnlimited.unity
     guid: c47f621e762068a4a89a3db73266511c
+  - enabled: 1
+    path: Assets/Scenes/Game/Lunch.unity
+    guid: 7710a6ed98d3f604681dfdd69c30363a
+  - enabled: 1
+    path: Assets/Scenes/Game/LunchUnlimited.unity
+    guid: 91d13267457b21746aaf4b79b8e93ca0
+  - enabled: 1
+    path: Assets/Scenes/Game/Dinner.unity
+    guid: 8bb1f9bf74239d541a210b6d6a470928
+  - enabled: 1
+    path: Assets/Scenes/Game/DinnerUnlimited.unity
+    guid: 94c23c297afcc6247863631f9906805f
+  - enabled: 1
+    path: Assets/Scenes/HowTo/HowTo.unity
+    guid: 8d86a7c2d2033064c80e9ec883f383e5
   m_configObjects: {}

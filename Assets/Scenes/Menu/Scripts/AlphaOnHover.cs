@@ -30,7 +30,8 @@ public class AlphaOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             || (name == "Dinner Button" && !GameManager.instance.GetUnlimited() && GameManager.instance.GetLunchClear())
             || (name == "Dinner Button" && GameManager.instance.GetUnlimited() && GameManager.instance.GetDinnerClear())
             || (name == "HowTo Button")
-            || (name == "Infinity Button"))
+            || (name == "Infinity Button")
+            || (name == "BackButton"))
         {
             button.interactable = true;
         }

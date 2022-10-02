@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void ToggleUnlimited()
     {
         data.unlimited = !data.unlimited;
-        audioSource.PlayOneShot(unlimitedToggleAudio);
+        audioSource.PlayOneShot(unlimitedToggleAudio, 5f);
     }
 
     #endregion
@@ -166,6 +166,12 @@ public class GameManager : MonoBehaviour
     {
         audioSource.PlayOneShot(howToAudio);
         LoadScene("HowTo");
+    }
+
+    public void LoadMenu()
+    {
+        audioSource.PlayOneShot(howToAudio);
+        LoadScene("Menu");
     }
 
     #endregion

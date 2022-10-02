@@ -151,7 +151,7 @@ public class SpawnManager : MonoBehaviour
             reloadTimer += Time.deltaTime;
             if(reloadTimer > RELOAD_TIME)
             {
-                GameManager.instance.LoadScene("Menu");
+                GameManager.instance.LoadMenu();
             }
         }
     }
