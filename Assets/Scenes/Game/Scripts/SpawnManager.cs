@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     // constants
     private const float Y_CENTER = 1.3f;
-    private const float STAGE_TIME = 10f; // should be 30f
+    private const float STAGE_TIME = 3f; // should be 30f
     private const float RELOAD_TIME = 5f;
 
     // variables
