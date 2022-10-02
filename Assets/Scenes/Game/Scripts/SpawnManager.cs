@@ -104,7 +104,7 @@ public class SpawnManager : MonoBehaviour
             {
                 foreach (string character in characters) // check for a key press of each key in characters
                 {
-                    if (Input.GetKeyDown(character))
+                    if ((character.Length==1) ? Input.GetKeyDown(character) && !(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) : Input.GetKeyDown(character[1].ToString()) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
                     {
                         misinput = true; // set to true for now, should be false after next for loop if input was valid
                         foreach (Transform child in transform) // compare pressed key to tiles to see if one should be deleted
