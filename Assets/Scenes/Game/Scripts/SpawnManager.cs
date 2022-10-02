@@ -157,4 +157,15 @@ public class SpawnManager : MonoBehaviour
             child.GetComponent<TileController>().Accelerate();
         }
     }
+
+    public int GetStage()
+    {
+        return stage;
+    }
+
+    public float GetTotalTime()
+    {
+        return totalTime;
+    }
+
 }
