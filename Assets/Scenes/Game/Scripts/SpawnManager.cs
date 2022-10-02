@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
     // constants
     private const float Y_CENTER = 1.3f;
-    private const float STAGE_TIME = 30f;
+    private const float STAGE_TIME = 10f; // should be 30f
+    private const float RELOAD_TIME = 5f;
 
     // variables
     [SerializeField] private GameObject tilePrefab;
@@ -21,6 +23,7 @@ public class SpawnManager : MonoBehaviour
     float spawnTimer;
     float spawnTime;
     float totalTime;
+    float reloadTimer;
     int stage;
 
     // audio
@@ -36,6 +39,7 @@ public class SpawnManager : MonoBehaviour
         spawnTime = Random.Range(minSpawnInterval, maxSpawnInterval);
         totalTime = 0;
         stage = 0;
+        reloadTimer = 0;
 
         // audio
         audioSource = GetComponent<AudioSource>();
@@ -45,7 +49,7 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         // only handle spawning and deleting if not out of patience
-        if(!PatienceMeter.OutOfPatience())
+        if(!PatienceMeter.OutOfPatience() && (GameManager.instance.GetUnlimited() || stage!=4))
         {
             spawnTimer += Time.deltaTime;
             totalTime += Time.deltaTime;
@@ -68,6 +72,18 @@ public class SpawnManager : MonoBehaviour
             else if (stage == 3 && totalTime > 4 * STAGE_TIME)
             {
                 stage++; // stage == 4 indicates success on non-infinite level
+                if (SceneManager.GetActiveScene().name == "Breakfast")
+                    GameManager.instance.SetBreakfastClear(true);
+                if (SceneManager.GetActiveScene().name == "Lunch")
+                    GameManager.instance.SetLunchClear(true);
+                if (SceneManager.GetActiveScene().name == "Dinner")
+                    GameManager.instance.SetDinnerClear(true);
+
+                // remove all current tiles
+                foreach(Transform child in transform)
+                {
+                    child.GetComponent<TileController>().Destroy();
+                }
             }
 
             // handle spawning new tiles
@@ -125,6 +141,14 @@ public class SpawnManager : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+        else // re load menu after delay
+        {
+            reloadTimer += Time.deltaTime;
+            if(reloadTimer > RELOAD_TIME)
+            {
+                GameManager.instance.LoadScene("Menu");
             }
         }
     }
