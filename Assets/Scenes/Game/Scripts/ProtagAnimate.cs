@@ -28,14 +28,22 @@ public class ProtagAnimate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // only set to 4 if 
-        if (spawnManager.GetStage() != 4 || !GameManager.instance.GetUnlimited())
-            animator.SetInteger("stage", spawnManager.GetStage());
-
-        if(spawnManager.GetTotalTime() - currentLandmark > 10f)
+        if(!PatienceMeter.OutOfPatience())
         {
-            currentLandmark += 10;
-            animator.SetInteger("rand", Random.Range(1, 5)); // pick random animation 1, 2, 3, or 4
+            // only set to 4 if 
+            if (spawnManager.GetStage() != 4 || !GameManager.instance.GetUnlimited())
+                animator.SetInteger("stage", spawnManager.GetStage());
+
+            if (spawnManager.GetTotalTime() - currentLandmark > 10f)
+            {
+                currentLandmark += 10;
+                animator.SetInteger("rand", Random.Range(1, 5)); // pick random animation 1, 2, 3, or 4
+            }
+        }
+        else // ran out of patience at some point
+        {
+            animator.SetInteger("rand", 0); // prevents attempts to play other animations
+            animator.SetTrigger("gameOver"); // trigger game over animation
         }
     }
 }
