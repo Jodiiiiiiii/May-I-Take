@@ -124,4 +124,8 @@ public class TileController : MonoBehaviour
         destroying = true;
     }
 
+    public void Accelerate()
+    {
+        xSpeed *= 1.2f;
+    }
 }

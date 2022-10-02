@@ -679,9 +679,9 @@ MonoBehaviour:
   - {fileID: 1556548957, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
   - {fileID: 2025228475, guid: ecc790b5dd64fb746b7eb3f07417918c, type: 3}
   minSpawnInterval: 1
-  maxSpawnInterval: 2
+  maxSpawnInterval: 1.6
   ySpawnRange: 1
-  tileSpeed: 2
+  tileSpeed: 3
   verticalBoundary: -4.2
   popSound: {fileID: 8300000, guid: 903efd74f6562864b91da06378fc0954, type: 3}
   misinputSound: {fileID: 8300000, guid: c11f3c8d207ac074b9e4b09a99b804f5, type: 3}

@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     // constants
     private const float Y_CENTER = 1.3f;
+    private const float STAGE_TIME = 30f;
 
     // variables
     [SerializeField] private GameObject tilePrefab;
@@ -19,6 +20,8 @@ public class SpawnManager : MonoBehaviour
 
     float spawnTimer;
     float spawnTime;
+    float totalTime;
+    int stage;
 
     // audio
     [SerializeField] private AudioClip popSound;
@@ -31,6 +34,8 @@ public class SpawnManager : MonoBehaviour
     {
         spawnTimer = 0;
         spawnTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+        totalTime = 0;
+        stage = 0;
 
         // audio
         audioSource = GetComponent<AudioSource>();
@@ -43,6 +48,27 @@ public class SpawnManager : MonoBehaviour
         if(!PatienceMeter.OutOfPatience())
         {
             spawnTimer += Time.deltaTime;
+            totalTime += Time.deltaTime;
+            // iterate stages
+            if(stage == 0 && totalTime > STAGE_TIME)
+            {
+                stage++;
+                Accelerate();
+            }
+            else if (stage == 1 && totalTime > 2 * STAGE_TIME)
+            {
+                stage++;
+                Accelerate();
+            }
+            else if (stage == 2 && totalTime > 3 * STAGE_TIME)
+            {
+                stage++;
+                Accelerate();
+            }
+            else if (stage == 3 && totalTime > 4 * STAGE_TIME)
+            {
+                stage++; // stage == 4 indicates success on non-infinite level
+            }
 
             // handle spawning new tiles
             if (spawnTimer > spawnTime)
@@ -116,5 +142,19 @@ public class SpawnManager : MonoBehaviour
     public void PlayMisinputSound()
     {
         audioSource.PlayOneShot(misinputSound);
+    }
+
+    private void Accelerate()
+    {
+        // update stats of future tiles
+        minSpawnInterval *= 0.8f;
+        maxSpawnInterval *= 0.8f;
+        tileSpeed *= 1.2f;
+
+        // accelerate existing tiles as well
+        foreach(Transform child in transform)
+        {
+            child.GetComponent<TileController>().Accelerate();
+        }
     }
 }
