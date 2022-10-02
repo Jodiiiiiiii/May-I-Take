@@ -69,6 +69,8 @@ public class TileController : MonoBehaviour
             // destroy tile if its key is pressed
             if (Input.GetKeyDown(character))
             {
+                // invoke shake animation
+                GameObject.Find("Main Camera").GetComponent<CameraController>().ShakeCamera();
                 Destroy(gameObject);
             }
 
