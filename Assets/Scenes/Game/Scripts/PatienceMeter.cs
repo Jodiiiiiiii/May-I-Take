@@ -6,8 +6,8 @@ public class PatienceMeter : MonoBehaviour
 {
     // constants
     private const float METER_LENGTH = 14.361f;
-    private const int MAX_PATIENCE = 10;
-    private const float CLOCK_SPEED = 2;
+    private const int MAX_PATIENCE = 30;
+    private const float CLOCK_SPEED = 5;
 
     // variables
     private static int patience;
@@ -39,8 +39,6 @@ public class PatienceMeter : MonoBehaviour
         // set gray bar to fill region behind clock's current position
         grayBox.transform.localPosition = new Vector3(clock.transform.localPosition.x / 2, 0, 0);
         grayBox.transform.localScale = new Vector3(clock.transform.localPosition.x, grayBox.transform.localScale.y, 1);
-
-        Debug.Log(patience);
     }
 
     public static void DecrementPatience()

@@ -21,6 +21,8 @@ public class SpawnManager : MonoBehaviour
 
     // audio
     [SerializeField] private AudioClip popSound;
+    [SerializeField] private AudioClip misinputSound;
+    [SerializeField] private AudioClip missSound;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -36,39 +38,82 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // only handle spawning and deleting if not out of patience
         if(!PatienceMeter.OutOfPatience())
+        {
             spawnTimer += Time.deltaTime;
 
-        if(spawnTimer > spawnTime)
-        {
-            // reset new goal time for next spawn
-            spawnTime = Random.Range(minSpawnInterval, maxSpawnInterval);
-            spawnTimer = 0;
-
-            // create new tile, and initialize its values
-            GameObject tile = Instantiate(tilePrefab, gameObject.transform);
-            // get new index (that is NOT a duplicate)
-            bool duplicate;
-            int index;
-            do
+            // handle spawning new tiles
+            if (spawnTimer > spawnTime)
             {
-                duplicate = false;
-                index = Random.Range(0, characters.Length);
-                foreach (Transform child in transform)
+                // reset new goal time for next spawn
+                spawnTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+                spawnTimer = 0;
+
+                // create new tile, and initialize its values
+                GameObject tile = Instantiate(tilePrefab, gameObject.transform);
+                // get new index (that is NOT a duplicate)
+                bool duplicate;
+                int index;
+                do
                 {
-                    if(child.GetComponent<TileController>().GetCharacter() == characters[index])
+                    duplicate = false;
+                    index = Random.Range(0, characters.Length);
+                    foreach (Transform child in transform)
                     {
-                        duplicate = true;
+                        if (child.GetComponent<TileController>().GetCharacter() == characters[index])
+                        {
+                            duplicate = true;
+                        }
+                    }
+                } while (duplicate); // keep getting new index until it is a new index
+                                     // initialize tile
+                tile.GetComponent<TileController>().init(tileSpeed, Random.Range(Y_CENTER - ySpawnRange, Y_CENTER + ySpawnRange), characters[index], sprites[index]);
+            }
+
+            // handle deleting tiles
+            bool misinput = false;
+            if (Input.anyKeyDown) // if any key pressed
+            {
+                foreach (string character in characters) // check for a key press of each key in characters
+                {
+                    if (Input.GetKeyDown(character))
+                    {
+                        misinput = true; // set to true for now, should be false after next for loop if input was valid
+                        foreach (Transform child in transform) // compare pressed key to tiles to see if one should be deleted
+                        {
+                            // destroy if character matches
+                            if (character == child.GetComponent<TileController>().GetCharacter())
+                            {
+                                child.GetComponent<TileController>().Destroy();
+                                misinput = false;
+                                break; // only one child should have the character
+                            }
+                        }
+                        if (misinput) // apply patience penalty, play sound, and shake camera
+                        {
+                            PatienceMeter.DecrementPatience();
+                            PlayMisinputSound();
+                            GameObject.Find("Main Camera").GetComponent<CameraController>().ShakeCamera();
+                        }
                     }
                 }
-            } while (duplicate); // keep getting new index until it is a new index
-            // initialize tile
-            tile.GetComponent<TileController>().init(tileSpeed, Random.Range(Y_CENTER -ySpawnRange, Y_CENTER + ySpawnRange), characters[index], sprites[index]);
+            }
         }
     }
 
     public void PlayPopSound()
     {
         audioSource.PlayOneShot(popSound);
+    }
+
+    public void PlayMissSound()
+    {
+        audioSource.PlayOneShot(missSound);
+    }
+
+    public void PlayMisinputSound()
+    {
+        audioSource.PlayOneShot(misinputSound);
     }
 }

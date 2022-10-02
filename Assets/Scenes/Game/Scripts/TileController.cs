@@ -92,21 +92,14 @@ public class TileController : MonoBehaviour
                 // translate horizontally
                 transform.position += Vector3.right * xSpeed * Time.deltaTime;
 
-                // destroy tile if its key is pressed
-                if (Input.GetKeyDown(character))
-                {
-                    // invoke shake animation and pop sound
-                    GameObject.Find("Main Camera").GetComponent<CameraController>().ShakeCamera();
-                    spawnManager.PlayPopSound();
-                    tileAnimator.SetTrigger("pop");
-                    destroying = true;
-                }
-
                 // destory object when leaving frame
                 if (transform.position.x > CAMERA_WIDTH)
                 {
-                    // decrement patience meter, then destroy tile
+                    // decrement patience meter, play miss sound, then destroy this tile
                     PatienceMeter.DecrementPatience();
+                    PatienceMeter.DecrementPatience();
+                    PatienceMeter.DecrementPatience();
+                    spawnManager.PlayMissSound();
                     Destroy(gameObject);
                 }
             }
@@ -117,6 +110,16 @@ public class TileController : MonoBehaviour
     public string GetCharacter()
     {
         return character;
+    }
+
+    public void Destroy()
+    {
+        // invoke pop sound
+        spawnManager.PlayPopSound();
+        // invoke tile pop animation
+        tileAnimator.SetTrigger("pop");
+        // start destroying delay timer
+        destroying = true;
     }
 
 }

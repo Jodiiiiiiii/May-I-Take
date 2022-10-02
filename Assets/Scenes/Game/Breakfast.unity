@@ -515,6 +515,8 @@ MonoBehaviour:
   ySpawnRange: 1
   tileSpeed: 2
   popSound: {fileID: 8300000, guid: 903efd74f6562864b91da06378fc0954, type: 3}
+  misinputSound: {fileID: 8300000, guid: c11f3c8d207ac074b9e4b09a99b804f5, type: 3}
+  missSound: {fileID: 8300000, guid: 9402c05575b74674093fc34eea2c14af, type: 3}
 --- !u!82 &564851691
 AudioSource:
   m_ObjectHideFlags: 0
