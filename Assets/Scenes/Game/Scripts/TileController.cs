@@ -40,11 +40,8 @@ public class TileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // translate horizontally
-        transform.position += Vector3.right * xSpeed * Time.deltaTime;
-
         // translate vertically (wobble)
-        if(wobbleUp)
+        if (wobbleUp)
         {
             // wobbles up
             transform.position += Vector3.up * yWobbleSpeed * Time.deltaTime;
@@ -63,17 +60,25 @@ public class TileController : MonoBehaviour
                 wobbleUp = true;
         }
 
-        // destroy tile if its key is pressed
-        if (Input.GetKeyDown(character))
+        // only conduct these operations if not out of patience
+        if(!PatienceMeter.OutOfPatience())
         {
-            Destroy(gameObject);
-        }
+            // translate horizontally
+            transform.position += Vector3.right * xSpeed * Time.deltaTime;
 
-        // destory object when leaving frame
-        if(transform.position.x > CAMERA_WIDTH)
-        {
-            // decrement patience meter here
-            Destroy(gameObject);
+            // destroy tile if its key is pressed
+            if (Input.GetKeyDown(character))
+            {
+                Destroy(gameObject);
+            }
+
+            // destory object when leaving frame
+            if (transform.position.x > CAMERA_WIDTH)
+            {
+                // decrement patience meter, then destroy tile
+                PatienceMeter.DecrementPatience();
+                Destroy(gameObject);
+            }
         }
     }
 }
