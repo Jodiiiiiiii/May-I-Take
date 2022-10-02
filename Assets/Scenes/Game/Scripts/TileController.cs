@@ -7,12 +7,17 @@ public class TileController : MonoBehaviour
 
     // constants
     private const float CAMERA_WIDTH = 9.5f;
+    private const float MIN_WOBBLE_HEIGHT = 0.3f;
+    private const float MAX_WOBBLE_HEIGHT = 0.5f;
+    private const float MAX_WOBBLE_SPEED = 0.5f;
 
     // variables
     private float xSpeed;
     private float initY;
     private string character;
-    // y drift speed
+    private float yWobbleSpeed;
+    private float wobbleHeight;
+    private bool wobbleUp;
 
     // constructor for spawn manager to use
     public void init(float _xSpeed, float _initY, string _character, Sprite _sprite)
@@ -21,7 +26,9 @@ public class TileController : MonoBehaviour
         initY = _initY;
         character = _character;
         GetComponent<SpriteRenderer>().sprite = _sprite;
-
+        yWobbleSpeed = Random.Range(0, MAX_WOBBLE_SPEED);
+        wobbleHeight = Random.Range(MIN_WOBBLE_HEIGHT, MAX_WOBBLE_HEIGHT);
+        wobbleUp = Random.Range(0,2)==1; // randomly assigns true or false
     }
 
     // Start is called before the first frame update
@@ -35,6 +42,26 @@ public class TileController : MonoBehaviour
     {
         // translate horizontally
         transform.position += Vector3.right * xSpeed * Time.deltaTime;
+
+        // translate vertically (wobble)
+        if(wobbleUp)
+        {
+            // wobbles up
+            transform.position += Vector3.up * yWobbleSpeed * Time.deltaTime;
+
+            // flip wobbleUp at max y
+            if (transform.position.y > initY + wobbleHeight)
+                wobbleUp = false;
+        }
+        else
+        {
+            // wobbles down
+            transform.position -= Vector3.up * yWobbleSpeed * Time.deltaTime;
+
+            // flip wobbleUp at min Y
+            if (transform.position.y < initY - wobbleHeight)
+                wobbleUp = true;
+        }
 
         // destroy tile if its key is pressed
         if (Input.GetKeyDown(character))
