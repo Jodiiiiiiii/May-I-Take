@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/Menu.unity
     guid: 1760a68ab73f779428aff49880a7e42a
   - enabled: 1
-    path: Assets/Scenes/Game/Breakfast.unity
+    path: Assets/Scenes/Game/BreakfastUnlimited.unity
     guid: 6851b49bbcede2c43840fa4e4a0a6799
   - enabled: 1
     path: Assets/Scenes/Game/Dinner.unity

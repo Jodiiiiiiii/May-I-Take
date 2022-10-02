@@ -914,7 +914,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KeysAndUI_38
+      name: Infinity
       rect:
         serializedVersion: 2
         x: 48
@@ -935,7 +935,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KeysAndUI_39
+      name: No
       rect:
         serializedVersion: 2
         x: 64
@@ -956,7 +956,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KeysAndUI_40
+      name: Yes
       rect:
         serializedVersion: 2
         x: 80
@@ -4360,7 +4360,6 @@ TextureImporter:
       KeysAndUI_186: 410159499
       KeysAndUI_171: 1990992982
       j: -268391403
-      KeysAndUI_40: -104054243
       KeysAndUI_44: -2077474749
       Minus: 1607550408
       KeysAndUI_74: 351910179
@@ -4401,18 +4400,18 @@ TextureImporter:
       KeysAndUI_198: 1725454046
       KeysAndUI_172: 2103251751
       KeysAndUI_159: 2144097499
-      KeysAndUI_39: -587590344
       KeysAndUI_163: 1850696126
       KeysAndUI_178: -378062769
       KeysAndUI_111: -1656983086
-      KeysAndUI_122: -99690082
       Alpha9: 408245207
+      LeftCurlyBracket: 1308729328
       KeysAndUI_179: -1648021121
       RightBracket: 871720128
-      RightCurlyBracket: -240099943
+      KeysAndUI_122: -99690082
       D: -1172711719
       KeysAndUI_36: -1630102514
       Alpha1: 1805484286
+      RightCurlyBracket: -240099943
       Alpha3: 635311101
       KeysAndUI_84: -808020968
       KeysAndUI_34: 209249406
@@ -4421,7 +4420,6 @@ TextureImporter:
       At: 1609667159
       W: -1010946648
       KeysAndUI_32: 165625226
-      LeftCurlyBracket: 1308729328
       KeysAndUI_189: 1679859429
       Alpha2: 29790202
       KeysAndUI_27: 1879573344
@@ -4445,6 +4443,7 @@ TextureImporter:
       KeysAndUI_29: 385338210
       KeysAndUI_103: -613850350
       KeysAndUI_105: 660964067
+      Yes: -104054243
       Percent: 1738853508
       KeysAndUI_183: 1473158371
       KeysAndUI_114: 1261264056
@@ -4474,7 +4473,6 @@ TextureImporter:
       h: -1589048077
       KeysAndUI_120: 2141501474
       i: -1702709787
-      KeysAndUI_38: -469532362
       Exclaim: -1363427635
       KeysAndUI_157: -674615322
       Q: -408470337
@@ -4483,10 +4481,10 @@ TextureImporter:
       KeysAndUI_41: -633175771
       KeysAndUI_128: 2112499632
       KeysAndUI_190: 687306960
-      G: 1528073979
       E: 1720597424
       B: -132424245
       KeysAndUI_76: 44108997
+      G: 1528073979
       O: -625498481
       KeysAndUI_49: -1103849987
       s: -1024656180
@@ -4498,6 +4496,7 @@ TextureImporter:
       KeysAndUI_187: -297280457
       KeysAndUI_161: -1088643427
       p: -324698323
+      Infinity: -469532362
       KeysAndUI_98: -1404148794
       Plus: 1419951700
       KeysAndUI_197: 782897495
@@ -4505,6 +4504,7 @@ TextureImporter:
       Comma: -1052744481
       l: 508909645
       KeysAndUI_37: 806739403
+      No: -587590344
       KeysAndUI_100: 1161090134
       KeysAndUI_125: -2136674529
       Y: 1191295457

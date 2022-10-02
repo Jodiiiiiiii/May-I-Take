@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         public bool breakfastClear;
         public bool lunchClear;
         public bool dinnerClear;
+        public bool unlimited;
     }
     private SaveData data;
 
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
                 data.breakfastClear = false;
                 data.lunchClear = false;
                 data.dinnerClear = false;
+                data.unlimited = false;
             }
         }
         else
@@ -88,6 +90,11 @@ public class GameManager : MonoBehaviour
         return data.dinnerClear;
     }
 
+    public bool GetUnlimited()
+    {
+        return data.unlimited;
+    }
+
     #endregion
 
     #region DATA SETTERS
@@ -96,7 +103,7 @@ public class GameManager : MonoBehaviour
     {
         data.breakfastClear = state;
     }
-    
+
     public void SetLunchClear(bool state)
     {
         data.lunchClear = state;
@@ -107,6 +114,11 @@ public class GameManager : MonoBehaviour
         data.dinnerClear = state;
     }
 
+    public void ToggleUnlimited()
+    {
+        data.unlimited = !data.unlimited;
+    }
+
     #endregion
 
     #region SCENE MANAGEMENT
@@ -114,6 +126,30 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
+
+    public void LoadBreakfast()
+    {
+        if (data.unlimited)
+            LoadScene("BreakfastUnlimited");
+        else
+            LoadScene("Breakfast");
+    }
+
+    public void LoadLunch()
+    {
+        if (data.unlimited)
+            LoadScene("LunchUnlimited");
+        else
+            LoadScene("Lunch");
+    }
+
+    public void LoadDinner()
+    {
+        if (data.unlimited)
+            LoadScene("DinnerUnlimited");
+        else
+            LoadScene("Dinner");
     }
 
     #endregion
