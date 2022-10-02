@@ -47,3 +47,6 @@ TagManager:
   - name: Tiles
     uniqueID: 3063876737
     locked: 0
+  - name: ForegroundUI
+    uniqueID: 777673075
+    locked: 0
